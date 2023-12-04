@@ -1,31 +1,30 @@
-# Home Sales Project
+Home_Sales
 
-This project involved analyzing and querying home sales data using Big Data and SparkSQL. The data analysis conducted encompassed the following processes:
+In this challenge, we used SparkSQL to determine key metrics about home sales data.
 
-1. Importing packages: The project began by importing necessary packages, including findspark to initialize Spark and pyspark.sql for working with SparkSQL.
+Import packages
 
-2. Creating a SparkSession: A SparkSession was created using `SparkSession.builder.appName("SparkSQL").getOrCreate()` to establish a connection to Spark.
+Create a Sparksession
 
-3. Reading data: The home sales data was read from an AWS S3 bucket into a DataFrame using the provided URL.
+Read the Data
 
-4. Creating a temporary view: A temporary view named "home_sales" was created for the DataFrame using the `createOrReplaceTempView()` method. This enabled running SQL queries on the DataFrame.
+Create a temporary view
 
-5. Querying the data: Several SQL queries were executed to analyze the home sales data. This included calculating the average price for a four-bedroom house sold in each year and the average price of homes based on different criteria such as bedrooms, bathrooms, and square footage.
+Query the data
 
-6. Caching the data: The temporary table "home_sales_revised_df" was cached using `spark.catalog.cacheTable()` method to improve query performance by storing the data in memory.
+Cache the data
 
-7. Query runtime comparison: The runtime of a specific query was compared between the cached version and the version using Parquet data. The start time was recorded using `time.time()` before executing each query, and the difference in time was calculated to measure the runtime.
+Query runtime comparison
 
-8. Writing Parquet data: The formatted home sales data was written to Parquet format with partitioning based on the "date_built" field using the `partitionBy().parquet()` method.
+Write Parquet Data
 
-9. Reading Parquet data: The Parquet data was read into a DataFrame to perform further analysis.
+Read the Parquet Data
 
-10. Creating a temporary table for Parquet data: A temporary table named "parquet_table" was created for the Parquet DataFrame using the `createOrReplaceTempView()` method.
+Create temprorary table
 
-11. Querying Parquet data: SQL queries were executed on the Parquet DataFrame to filter out view ratings with an average price greater than or equal to $350,000. The runtime was measured and compared to the cached version.
+Query the data
 
-12. Uncaching the temporary table: The temporary table "home_sales" was uncached using `spark.catalog.uncacheTable()` method to release memory resources.
+Uncache the temporary table
 
-13. Checking caching status: The caching status of the table "home_sales" was checked using `spark.catalog.isCached()` method to confirm whether it was still cached or not.
+Check cache status
 
-Overall, this project demonstrated the usage of SparkSQL to read, query, cache, and analyze home sales data, providing insights into average prices based on various criteria.
